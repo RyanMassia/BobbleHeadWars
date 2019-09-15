@@ -6,6 +6,8 @@ public class PlayerController : MonoBehaviour
 {
     public float movespeed = 50.0f;
     private CharacterController characterController;
+    public Rigidbody head; // so we can apply force to the head
+
     // Start is called before the first frame update
     void Start()
     {
@@ -25,5 +27,19 @@ public class PlayerController : MonoBehaviour
         Vector3 moveDirection = new Vector3(Input.GetAxis("Horizontal"), //stores movement direction of the player
                                            0, Input.GetAxis("Vertical"));
         characterController.SimpleMove(moveDirection * movespeed); //allows charcter to move but not through objects
+    }
+
+    private void FixedUpdate() //called a set number of times
+    {
+        Vector3 moveDirection = new Vector3(Input.GetAxis("Horizontal"),
+                                           0, Input.GetAxis("Vertical"));
+        if (moveDirection == Vector3.zero) //if vector 3 is zero player isnt moving
+        {
+            //TODO
+        }
+        else
+        {
+            head.AddForce(transform.right * 150, ForceMode.Acceleration); //head moves by set amount
+        }
     }
 }
