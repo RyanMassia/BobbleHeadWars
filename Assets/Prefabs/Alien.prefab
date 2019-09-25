@@ -823,9 +823,9 @@ GameObject:
   - component: {fileID: 12204057272097299}
   - component: {fileID: 5594903691658813808}
   - component: {fileID: 8031584060026298841}
-  - component: {fileID: 4937578787676526776}
-  - component: {fileID: 2032730696957334148}
-  m_Layer: 0
+  - component: {fileID: 8225323881345432474}
+  - component: {fileID: 7876155535415423568}
+  m_Layer: 8
   m_Name: Alien
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -872,12 +872,12 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2953484436111757949}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 2.52
   m_Center: {x: 0.34, y: 2.54, z: 0.57}
---- !u!195 &4937578787676526776
+--- !u!195 &8225323881345432474
 NavMeshAgent:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -899,7 +899,7 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 1
---- !u!114 &2032730696957334148
+--- !u!114 &7876155535415423568
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -908,10 +908,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 2953484436111757949}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: be00921519027b84b9b0bc2619299221, type: 3}
+  m_Script: {fileID: 11500000, guid: 5be217b3e8f44234f943413613e4817f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
+  navigationUpdate: 1
 --- !u!1 &3392754400131107908
 GameObject:
   m_ObjectHideFlags: 0
