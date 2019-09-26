@@ -729,6 +729,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7919533188734761686}
+  - component: {fileID: 1892904988}
   m_Layer: 0
   m_Name: BobbleEnemy-Head
   m_TagString: Untagged
@@ -751,6 +752,25 @@ Transform:
   m_Father: {fileID: 12204057272097299}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: -89.96, y: 0, z: 0}
+--- !u!95 &1892904988
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2846989937863047018}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 6fef8545ca255514f90b29b2e342f1f3, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &2847180815055454787
 GameObject:
   m_ObjectHideFlags: 0
@@ -888,7 +908,7 @@ NavMeshAgent:
   m_AgentTypeID: 0
   m_Radius: 1.45
   m_Speed: 20
-  m_Acceleration: 15.5
+  m_Acceleration: 6.14
   avoidancePriority: 50
   m_AngularSpeed: 120
   m_StoppingDistance: 0
