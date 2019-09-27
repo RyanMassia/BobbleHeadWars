@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     public Rigidbody head; // so we can apply force to the head
     public LayerMask layerMask; // where the ray will hit
     private Vector3 currentLookTarget = Vector3.zero; //look value starts at 0
+    public Animator bodyAnimator;
 
     // Start is called before the first frame update
     void Start()
@@ -37,11 +38,12 @@ public class PlayerController : MonoBehaviour
                                            0, Input.GetAxis("Vertical"));
         if (moveDirection == Vector3.zero) //if vector 3 is zero player isnt moving
         {
-            //TODO
+            bodyAnimator.SetBool("IsMoving", false);
         }
         else
         {
             head.AddForce(transform.right * 150, ForceMode.Acceleration); //head moves by set amount
+            bodyAnimator.SetBool("IsMoving", true);
         }
 
         RaycastHit hit; //creates empty raycast , if it hits something it will fill

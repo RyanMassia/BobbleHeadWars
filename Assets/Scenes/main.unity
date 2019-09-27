@@ -163,6 +163,7 @@ MonoBehaviour:
   layerMask:
     serializedVersion: 2
     m_Bits: 4096
+  bodyAnimator: {fileID: 1449038003}
 --- !u!143 &10911502
 CharacterController:
   m_ObjectHideFlags: 0
@@ -1247,6 +1248,10 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 9500000, guid: bdcdb18812d75d743a578b0c2d793bfb, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 53dc0826fa2ad7b40a156fedf71260aa, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bdcdb18812d75d743a578b0c2d793bfb, type: 3}
 --- !u!4 &1097409836 stripped
@@ -1322,6 +1327,12 @@ MonoBehaviour:
   BulletPrefab: {fileID: 8353677287017989228, guid: 6e35d6d55690dd247aa1139231d02b08,
     type: 3}
   launch_position: {fileID: 1846514967}
+--- !u!95 &1449038003 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 9500000, guid: bdcdb18812d75d743a578b0c2d793bfb,
+    type: 3}
+  m_PrefabInstance: {fileID: 1097409835}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1479298712
 PrefabInstance:
   m_ObjectHideFlags: 0
