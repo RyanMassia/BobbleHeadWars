@@ -29,5 +29,6 @@ public class Alien : MonoBehaviour
     void OnTriggerEnter(Collider other)
     {
         Destroy(gameObject); // objext is destroyed when colliding with another collider
+        SoundManager.Instance.PlayOneShot(SoundManager.Instance.alienDeath);
     }
 }

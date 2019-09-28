@@ -16,16 +16,11 @@ public class SoundManager : MonoBehaviour
     public AudioClip powerUpAppear;
 
     private AudioSource soundEffectAudio; // references audio source 
+
     // Start is called before the first frame update
     void Start()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if(Instance == null)
+        if (Instance == null)
         {
             Instance = this; // creates a instance of a sound mananger
         }
@@ -35,13 +30,24 @@ public class SoundManager : MonoBehaviour
         }
 
         AudioSource[] sources = GetComponents<AudioSource>();
-        foreach(AudioSource source in sources)
+        foreach (AudioSource source in sources)
         {
-            if(source.clip == null)
+            if (source.clip == null)
             {
                 soundEffectAudio = null;
             }
         }
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        
+    }
+
+    public void PlayOneShot(AudioClip clip)
+    {
+        soundEffectAudio.PlayOneShot(clip);
     }
 }
 
