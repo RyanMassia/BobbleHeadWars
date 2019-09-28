@@ -480,11 +480,14 @@ MonoBehaviour:
   - {fileID: 1165825119}
   - {fileID: 475670978}
   alien: {fileID: 2953484436111757949, guid: 83af5cfbd1918504f8a7c69ece04e53f, type: 3}
+  upgradePrefab: {fileID: 105092, guid: 941d6224549424c91b1cf112b44ec0cb, type: 3}
   maxAliensOnScreen: 10
   totalAliens: 10
   minSpawnTime: 0
   maxSpawnTIme: 3
   aliensPerSpawn: 1
+  gun: {fileID: 1449038002}
+  upgradeMaxTimeSpawn: 7.5
 --- !u!4 &330420964
 Transform:
   m_ObjectHideFlags: 0
@@ -1476,6 +1479,8 @@ MonoBehaviour:
   BulletPrefab: {fileID: 8353677287017989228, guid: 6e35d6d55690dd247aa1139231d02b08,
     type: 3}
   launch_position: {fileID: 1846514967}
+  isUpgraded: 0
+  upgradeTime: 10
 --- !u!95 &1449038003 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 9500000, guid: bdcdb18812d75d743a578b0c2d793bfb,
