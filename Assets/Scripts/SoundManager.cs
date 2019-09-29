@@ -14,11 +14,10 @@ public class SoundManager : MonoBehaviour
     public AudioClip elevatorArrived;
     public AudioClip powerUpPickup;
     public AudioClip powerUpAppear;
+    private AudioSource soundEffectAudio;  // references audio source 
 
-    private AudioSource soundEffectAudio; // references audio source 
-
-    // Start is called before the first frame update
-    void Start()
+    // Use this for initialization
+    void Start ()
     {
         if (Instance == null)
         {
@@ -28,26 +27,25 @@ public class SoundManager : MonoBehaviour
         {
             Destroy(gameObject); // if for some reason another instance is made it is destroyed
         }
-
         AudioSource[] sources = GetComponents<AudioSource>();
         foreach (AudioSource source in sources)
         {
             if (source.clip == null)
             {
-                soundEffectAudio = null;
+                soundEffectAudio = source;
             }
         }
     }
-
-    // Update is called once per frame
-    void Update()
+	
+	// Update is called once per frame
+	void Update ()
     {
-        
-    }
+		
+	}
 
     public void PlayOneShot(AudioClip clip)
     {
         soundEffectAudio.PlayOneShot(clip);
     }
-}
 
+}

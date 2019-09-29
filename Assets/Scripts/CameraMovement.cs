@@ -4,23 +4,22 @@ using UnityEngine;
 
 public class CameraMovement : MonoBehaviour
 {
-    public GameObject Follow_Target; // allows you to put a game object in here to follow
-    public float movespeed;
-    
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public GameObject followTarget; // allows you to put a game object in here to follow
+    public float moveSpeed;
 
-    // Update is called once per frame
-    void Update()
+	// Use this for initialization
+	void Start ()
     {
-        if(Follow_Target != null)
+		
+	}
+	
+	// Update is called once per frame
+	void Update ()
+    {
+		if (followTarget != null)
         {
             // has the camera follow behind the targeted object
-            transform.position = Vector3.Lerp(transform.position,
-            Follow_Target.transform.position, Time.deltaTime * movespeed);
+            transform.position = Vector3.Lerp(transform.position, followTarget.transform.position, Time.deltaTime * moveSpeed);
         }
-    }
+	}
 }

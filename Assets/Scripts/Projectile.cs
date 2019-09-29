@@ -4,21 +4,21 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+	// Use this for initialization
+	void Start ()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
+		
+	}
+	
+	// Update is called once per frame
+	void Update ()
     {
-        
-    }
+		
+	}
 
     private void OnBecameInvisible()
     {
-        Destroy(gameObject); // destroys object if it isnt seen on screen
+        Destroy(gameObject);  // destroys object if it isnt seen on screen
     }
 
     private void OnCollisionEnter(Collision collision)
