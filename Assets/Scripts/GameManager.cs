@@ -33,6 +33,10 @@ public class GameManager : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
+        if (player == null)
+        {
+            return;
+        }
         currentUpgradeTime += Time.deltaTime; // s adds the amount of time from the past frame
         currentSpawnTime += Time.deltaTime; //will add all the time between each frame
 

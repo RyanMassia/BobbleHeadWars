@@ -10,11 +10,14 @@ public class PlayerController : MonoBehaviour
     public Animator bodyAnimator;
     public float[] hitForce;
     public float timeBetweenHits = 2.5f; // period before hero takes damage
+    public Rigidbody marineBody;
+    private bool isDead = false; // keeps track of the player’s current death state
     private bool isHit = false; // says if hero took a hit
     private float timeSinceHit = 0; // tracks grace time since hit
     private int hitNumber = -1; // number of times hero hit 
     private Vector3 currentLookTarget = Vector3.zero;
     private CharacterController characterController;
+
 
 	
     // Use this for initialization
@@ -83,12 +86,26 @@ public class PlayerController : MonoBehaviour
                 }
                 else
                 {
-                    // death todo
+                    Die();
                 }
                 isHit = true; // 4: plays the grunt sound and kills the alien
                 SoundManager.Instance.PlayOneShot(SoundManager.Instance.hurt);
             }
             alien.Die();
         }
+    }
+    public void Die()
+    {
+        bodyAnimator.SetBool("IsMoving", false);
+        marineBody.transform.parent = null;
+        marineBody.isKinematic = false; // player cant move the corpse 
+        marineBody.useGravity = true; // falls to the ground 
+        marineBody.gameObject.GetComponent<CapsuleCollider>().enabled = true;
+        marineBody.gameObject.GetComponent<Gun>().enabled = false; // prevents the player from firing after death.
+        Destroy(head.gameObject.GetComponent<HingeJoint>()); // destroys the joint to release the head from the body
+        head.transform.parent = null; // Now that head can roll!
+        head.useGravity = true; // 
+        SoundManager.Instance.PlayOneShot(SoundManager.Instance.marineDeath);
+        Destroy(gameObject);
     }
 }
