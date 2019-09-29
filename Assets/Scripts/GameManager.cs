@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour {
     public GameObject upgradePrefab;// player must collide with to get the update
     public Gun gun; // reference to Gun script
     public float upgradeMaxTimeSpawn = 7.5f;
+    public Animator arenaAnimator;
 
 
     private bool spawnedUpgrade = false;
@@ -108,5 +109,16 @@ public class GameManager : MonoBehaviour {
         //Debug.Log("dead alien");
         aliensOnScreen -= 1;
         totalAliens -= 1;
+        if (totalAliens == 0)
+        {
+            Invoke("endGame", 2.0f);
+        }
+    }
+
+    private void endGame()
+    {
+        SoundManager.Instance.PlayOneShot(SoundManager.Instance.
+        elevatorArrived);
+        arenaAnimator.SetTrigger("PlayerWon");
     }
 }
