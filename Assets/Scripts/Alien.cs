@@ -9,6 +9,8 @@ public class Alien : MonoBehaviour {
     public Transform target;
     public float navigationUpdate; // tracks in miliseconds when alien should update path
     public UnityEvent OnDestroy;
+    public Rigidbody head;
+    public bool isAlive = true;
     private float navigationTime = 0; // tracks how much time has passed since last update
     private NavMeshAgent agent;
 
@@ -22,24 +24,41 @@ public class Alien : MonoBehaviour {
 	void Update ()
     {
         navigationTime += Time.deltaTime;
-        if (navigationTime > navigationUpdate) //cheaks to see if a certain amount of time has passed
+
+        if (isAlive)
         {
-            agent.destination = target.position;
-            navigationTime = 0;
+            if (navigationTime > navigationUpdate) //cheaks to see if a certain amount of time has passed
+            {
+                agent.destination = target.position;
+                navigationTime = 0;
+            }
         }
     }
 
     void OnTriggerEnter(Collider other)
     {
-        SoundManager.Instance.PlayOneShot(SoundManager.Instance.alienDeath);
+        if (isAlive)
+        {
+            Die();
+            SoundManager.Instance.PlayOneShot(SoundManager.Instance.alienDeath);
+        }        
         //Destroy(gameObject); // objext is destroyed when colliding with another collider
-        Die(); // triggers die function
+        //Die(); // triggers die function
     }
 
     public void Die()
     {
+        isAlive = false;
+        head.GetComponent<Animator>().enabled = false;
+        head.isKinematic = false;
+        head.useGravity = true;
+        head.GetComponent<SphereCollider>().enabled = true;
+        head.gameObject.transform.parent = null;
+        head.velocity = new Vector3(0, 26.0f, 3.0f);
         OnDestroy.Invoke();
         OnDestroy.RemoveAllListeners();
+        SoundManager.Instance.PlayOneShot(SoundManager.Instance.alienDeath);
+        head.GetComponent<SelfDestruct>().Initiate();
         Destroy(gameObject);
     }
 }
