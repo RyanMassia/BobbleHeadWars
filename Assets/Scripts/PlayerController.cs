@@ -17,14 +17,14 @@ public class PlayerController : MonoBehaviour
     private int hitNumber = -1; // number of times hero hit 
     private Vector3 currentLookTarget = Vector3.zero;
     private CharacterController characterController;
+    private DeathParticles deathParticles;
 
-
-	
     // Use this for initialization
-	void Start ()
+    void Start ()
     {
         characterController = GetComponent<CharacterController>();
-	}
+        deathParticles = gameObject.GetComponentInChildren<DeathParticles>();
+    }
 	
 	// Update is called once per frame
 	void Update ()
@@ -106,6 +106,7 @@ public class PlayerController : MonoBehaviour
         head.transform.parent = null; // Now that head can roll!
         head.useGravity = true; // 
         SoundManager.Instance.PlayOneShot(SoundManager.Instance.marineDeath);
+        deathParticles.Activate();
         Destroy(gameObject);
     }
 }

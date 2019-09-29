@@ -13,6 +13,7 @@ public class Alien : MonoBehaviour {
     public bool isAlive = true;
     private float navigationTime = 0; // tracks how much time has passed since last update
     private NavMeshAgent agent;
+    private DeathParticles deathParticles;
 
     // Use this for initialization
     void Start ()
@@ -59,6 +60,19 @@ public class Alien : MonoBehaviour {
         OnDestroy.RemoveAllListeners();
         SoundManager.Instance.PlayOneShot(SoundManager.Instance.alienDeath);
         head.GetComponent<SelfDestruct>().Initiate();
+        if (deathParticles)
+        {
+            deathParticles.transform.parent = null;
+            deathParticles.Activate();
+        }
         Destroy(gameObject);
+    }
+    public DeathParticles GetDeathParticles()
+    {
+        if (deathParticles == null)
+        {
+            deathParticles = GetComponentInChildren<DeathParticles>();//  returns the first death particle script that it finds
+        }
+        return deathParticles;
     }
 }

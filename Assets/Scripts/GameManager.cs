@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour {
     public GameObject player; //represents the hero
     public GameObject[] spawnPoints; //represents all the spawn points
     public GameObject alien; //represents the alien menace
+    public GameObject deathFloor;
     public int maxAliensOnScreen; //how many enemies on screen
     public int totalAliens; //counts all enemies on screen
     public float minSpawnTime; // control the rate of the ememies spawning
@@ -15,6 +16,7 @@ public class GameManager : MonoBehaviour {
     public GameObject upgradePrefab;// player must collide with to get the update
     public Gun gun; // reference to Gun script
     public float upgradeMaxTimeSpawn = 7.5f;
+
 
     private bool spawnedUpgrade = false;
     private float actualUpgradeTime = 0;
@@ -95,6 +97,7 @@ public class GameManager : MonoBehaviour {
                         Vector3 targetRotation = new Vector3(player.transform.position.x, newAlien.transform.position.y, player.transform.position.z);
                         newAlien.transform.LookAt(targetRotation);// rotates alien on y axis toward player
                         alienScript.OnDestroy.AddListener(AlienDestroyed);
+                        alienScript.GetDeathParticles().SetDeathFloor(deathFloor);
                     }
                 }
             }
